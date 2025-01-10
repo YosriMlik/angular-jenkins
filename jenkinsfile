@@ -9,7 +9,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'main', url: 'https://github.com/your-repo/angular-frontend.git'
+                git branch: 'main', url: 'https://github.com/YosriMlik/angular-jenkins.git'
             }
         }
 
