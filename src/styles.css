@@ -1,0 +1,34 @@
+* {
+  font-family: consolas;
+}
+body{
+  margin: 0;
+}
+button {
+  padding: 5px 10px;
+  background-color: #333;
+  color: white;
+  border: none;
+}
+
+button:disabled {
+  background-color: #ccc; /* Change the background color for disabled state */
+  color: #888; /* Change the text color for disabled state */
+  cursor: not-allowed; /* Change the cursor to indicate the button is disabled */
+}
+input{
+  padding: 2px 0px;
+}
+dialog {
+  position: fixed;
+  top: 35%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin: 0;
+  padding: 1rem 2rem 2rem 2rem;
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 60%;
+  max-width: 400px;
+}

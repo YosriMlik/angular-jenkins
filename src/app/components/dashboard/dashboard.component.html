@@ -1,0 +1,90 @@
+<h2>Bank Accounts</h2>
+
+<!-- Create Account Button -->
+<button (click)="onCreateAccount()" class="submit-button">+ Create New Account</button>
+<br>
+
+<dialog [attr.open]="showMsg ? '' : null">
+  <p>{{ message }}</p>
+  <button (click)="closeDialog()">Close</button>
+</dialog>
+
+<!-- Create Account Form -->
+<dialog [attr.open]="showCreateForm ? '' : null">
+  <h3>Create New Account</h3>
+  <form (ngSubmit)="onSubmitCreate()">
+    <table>
+      <tr>
+        <td><label>Balance:</label></td>
+        <td><input type="number" [(ngModel)]="newAccount.solde" name="solde" required autofocus /></td>
+      </tr>
+      <tr>
+        <td><label>Creation Date:</label></td>
+        <td><input type="date" [(ngModel)]="newAccount.creationDate" name="creationDate" required /></td>
+      </tr>
+      <br>
+      <tr>
+        <td colspan="2">
+          <button type="submit">Create</button>&nbsp;
+          <button type="button" (click)="showCreateForm = false">Cancel</button>
+        </td>
+      </tr>
+    </table>
+  </form></dialog>
+
+
+<!-- Edit Account Form -->
+<dialog [attr.open]="showEditForm ? '' : null">
+  <h3>Edit Account</h3>
+  <form (ngSubmit)="onSubmitEdit()">
+    <table>
+      <tr>
+        <td><label>RIB:</label></td>
+        <td><input type="number" [(ngModel)]="selectedAccount.rib" name="rib" readonly /></td>
+      </tr>
+      <tr>
+        <td><label>Balance:</label></td>
+        <td><input type="number" [(ngModel)]="selectedAccount.solde" name="solde" required /></td>
+      </tr>
+      <tr>
+        <td><label>Creation Date:</label></td>
+        <td><input type="date" [(ngModel)]="selectedAccount.creationDate" name="creationDate" required /></td>
+      </tr>
+      <br>
+      <tr>
+        <td colspan="2">
+          <button type="submit">Update</button>&nbsp;
+          <button type="button" (click)="showEditForm = false">Cancel</button>
+        </td>
+      </tr>
+    </table>
+  </form></dialog>
+
+<!-- Accounts Table -->
+<table border="1">
+  <thead>
+    <tr>
+      <th>RIB</th>
+      <th>&nbsp;Client Name&nbsp;</th>
+      <th>&nbsp;Balance&nbsp;</th>
+      <th>&nbsp;Creation Date&nbsp;</th>
+      <th>&nbsp;Actions&nbsp;</th>
+    </tr>
+  </thead>
+  <tbody>
+    @for (account of accounts; track account.rib) {
+      <tr>
+        <td>&nbsp;{{ account.rib }}&nbsp;</td>
+        <td>&nbsp;{{ account.client.firstName }} {{ account.client.lastName }}&nbsp;</td>
+        <td>&nbsp;{{ account.solde }}&nbsp;</td>
+        <td>&nbsp;{{ account.creationDate }}&nbsp;</td>
+        <td>
+          <button (click)="onEditAccount(account)">Edit</button>&nbsp;
+          <button (click)="onDeleteAccount(account.rib)">Delete</button>
+        </td>
+      </tr>
+    }
+  </tbody>
+</table>
+
+

@@ -1,0 +1,41 @@
+<h2>Register</h2>
+<form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+  <table style="border-collapse: collapse;">
+    <tr>
+      <td><label for="firstName">First Name:</label></td>
+      <td><input id="firstName" formControlName="firstName" /></td>
+    </tr>
+    <br>
+    <tr>
+      <td><label for="lastName">Last Name:</label></td>
+      <td><input id="lastName" formControlName="lastName" /></td>
+    </tr>
+    <br>
+    <tr>
+      <td><label for="username">Username:</label></td>
+      <td><input id="username" formControlName="username" /></td>
+    </tr>
+    <br>
+    <tr>
+      <td><label for="email">Email:</label></td>
+      <td><input id="email" type="email" formControlName="email" /></td>
+    </tr>
+    <br>
+    <tr>
+      <td><label for="password">Password:</label></td>
+      <td><input id="password" type="password" formControlName="password" /></td>
+    </tr>
+    <br>
+    <tr>
+      <td colspan="2">
+        <button class="submit-button" type="submit" [disabled]="registerForm.invalid">Register</button>
+      </td>
+    </tr>
+    <br>
+  </table>
+  <dialog [attr.open]="dialogVisible ? '' : null">
+    <p>{{ message }}</p>
+    <button (click)="goToLogin()">Login Now !</button>&nbsp;
+    <button (click)="closeDialog()">Close</button>
+  </dialog>
+</form>

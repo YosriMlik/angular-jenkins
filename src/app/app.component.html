@@ -1,0 +1,18 @@
+<style>
+
+</style>
+
+<nav>
+  @if (!authGuard.isAuthenticated()) {
+    <a routerLink="/login" routerLinkActive="active">Login</a>
+    <a routerLink="/register" routerLinkActive="active">Register</a>
+  }
+  @if (authGuard.isAuthenticated()) {
+    <a routerLink="/dashboard">Dashboard</a>
+    <a routerLink="/profile">Profile</a>
+    <a (click)="onDisconnect()" routerLink="#">Disconnect</a>
+  }
+</nav>
+<div class="router-outlet">
+  <router-outlet />
+</div>

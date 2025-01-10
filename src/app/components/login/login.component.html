@@ -1,0 +1,18 @@
+<h2>Login</h2>
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+  <div>
+    <label for="username">Username:&nbsp;</label>
+    <input id="username" formControlName="username" />
+  </div>
+  <br>
+  <div>
+    <label for="password">Password:&nbsp;</label>
+    <input id="password" type="password" formControlName="password" />
+  </div>
+  <br>
+  <button class="submit-button" type="submit" [disabled]="loginForm.invalid">Login</button>
+</form>
+<dialog [attr.open]="dialogVisible ? '' : null">
+  <p>{{ message }}</p>
+  <button (click)="closeDialog()">Close</button>
+</dialog>
